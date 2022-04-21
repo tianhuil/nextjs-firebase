@@ -4,7 +4,6 @@ import React from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
-    console.log("a");
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("./sw.js")

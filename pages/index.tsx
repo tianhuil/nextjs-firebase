@@ -1,8 +1,19 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
+import { useInstall } from "../comp/install";
 
 const Home: NextPage = () => {
+  const [prompt, promptToInstall] = useInstall();
+  const [isVisible, setVisibleState] = React.useState(false);
+  const hide = () => setVisibleState(false);
+
+  React.useEffect(() => {
+    if (prompt) {
+      setVisibleState(true);
+    }
+  }, [prompt]);
+
   return (
     <div>
       <Head>
@@ -12,8 +23,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <main>
+      <main style={{ padding: 20 }}>
         <h2>Hello</h2>
+        {isVisible && (
+          <>
+            <button onClick={promptToInstall}>Install</button>{" "}
+            <button onClick={hide}>Dismiss</button>
+          </>
+        )}
       </main>
     </div>
   );
