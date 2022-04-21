@@ -3,12 +3,6 @@ import Head from "next/head";
 import React from "react";
 
 const Home: NextPage = () => {
-  React.useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
-    }
-  });
-
   return (
     <div>
       <Head>
