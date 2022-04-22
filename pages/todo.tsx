@@ -27,9 +27,18 @@ export default function TodoList() {
 
   return (
     <div style={{ maxWidth: "400px", margin: "2em" }}>
-      <TransitionGroup className="todo-list" appear enter>
+      <TransitionGroup className="todo-list" appear={true} enter={true}>
         {items.map(({ id, text }) => (
-          <Transition key={id} timeout={500} classNames="item" appear in>
+          <Transition
+            key={id}
+            timeout={500}
+            classNames="item"
+            mountOnEnter
+            unmountOnExit
+            appear={true}
+            enter={true}
+            in={true}
+          >
             {(state) => (
               <div
                 style={{
@@ -38,7 +47,7 @@ export default function TodoList() {
                   padding: ".5em",
                   border: "1px solid red",
                   ...defaultStyle,
-                  ...transitionStyles[state as "entering"], // trick the type checker
+                  ...transitionStyles[state as "exited"], // trick the type checker
                 }}
               >
                 <button
