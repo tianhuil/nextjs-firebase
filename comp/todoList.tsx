@@ -39,6 +39,7 @@ export function TodoList() {
       </TransitionGroup>
 
       <button
+        style={{ marginTop: "2em" }}
         onClick={() => {
           const text = prompt("Enter some text");
           if (text) {
