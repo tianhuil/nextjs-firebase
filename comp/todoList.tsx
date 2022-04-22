@@ -1,7 +1,21 @@
 // Most from https://reactcommunity.org/react-transition-group/transition-group
 import { nanoid } from "nanoid";
 import React from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Transition, TransitionGroup } from "react-transition-group";
+
+const duration = 500;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+};
+
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+};
 
 export function TodoList() {
   const [items, setItems] = React.useState([
@@ -10,35 +24,47 @@ export function TodoList() {
     { id: nanoid(), text: "Invite friends over" },
     { id: nanoid(), text: "Fix the TV" },
   ]);
+
   return (
     <div style={{ marginTop: "2em" }}>
       <TransitionGroup className="todo-list">
         {items.map(({ id, text }) => (
-          <CSSTransition key={id} timeout={500} classNames="item">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                padding: ".5em",
-                border: "1px solid red",
-              }}
-            >
-              <button
-                className="remove-btn"
-                style={{ marginRight: ".5em" }}
-                onClick={() =>
-                  setItems((items) => items.filter((item) => item.id !== id))
-                }
+          <Transition
+            key={id}
+            timeout={duration}
+            classNames="item"
+            appear
+            in={true}
+          >
+            {(state) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  padding: ".5em",
+                  border: "1px solid red",
+                  ...defaultStyle,
+                  ...transitionStyles[state as "entering"], // trick the type checker
+                }}
               >
-                &times;
-              </button>
-              {text}
-            </div>
-          </CSSTransition>
+                <button
+                  className="remove-btn"
+                  style={{ marginRight: ".5em" }}
+                  onClick={() =>
+                    setItems((items) => items.filter((item) => item.id !== id))
+                  }
+                >
+                  &times;
+                </button>
+                {text}
+              </div>
+            )}
+          </Transition>
         ))}
       </TransitionGroup>
 
       <button
+        style={{ marginTop: "2em" }}
         onClick={() => {
           const text = prompt("Enter some text");
           if (text) {
