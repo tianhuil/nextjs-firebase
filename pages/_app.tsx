@@ -1,7 +1,6 @@
 import type { AppProps } from "next/app";
 import "normalize.css/normalize.css";
 import React from "react";
-import "../comp/todoList.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
