@@ -11,13 +11,13 @@ const defaultStyle = {
 };
 
 const transitionStyles = {
-  entering: { opacity: 0 },
+  entering: { opacity: 1 },
   entered: { opacity: 1 },
   exiting: { opacity: 0 },
   exited: { opacity: 0 },
 };
 
-export function TodoList() {
+export default function TodoList() {
   const [items, setItems] = React.useState([
     { id: nanoid(), text: "Buy eggs" },
     { id: nanoid(), text: "Pay bills" },
@@ -26,14 +26,10 @@ export function TodoList() {
   ]);
 
   return (
-    <div style={{ marginTop: "2em" }}>
-      <TransitionGroup className="todo-list">
+    <div style={{ maxWidth: "400px", margin: "2em" }}>
+      <TransitionGroup className="todo-list" appear enter>
         {items.map(({ id, text }) => (
-          <Transition
-            key={id}
-            timeout={{ enter: 0, exit: 500 }}
-            classNames="item"
-          >
+          <Transition key={id} timeout={500} classNames="item" appear in>
             {(state) => (
               <div
                 style={{

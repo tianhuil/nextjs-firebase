@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { useInstall } from "../comp/install";
-import { TodoList } from "../comp/todoList";
 
 const Home: NextPage = () => {
   const [prompt, promptToInstall] = useInstall();
@@ -32,7 +31,6 @@ const Home: NextPage = () => {
             <button onClick={hide}>Dismiss</button>
           </>
         )}
-        <TodoList />
       </main>
     </div>
   );
