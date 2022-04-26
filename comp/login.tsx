@@ -1,9 +1,8 @@
 import { Auth, GoogleAuthProvider, signOut as _signOut } from "firebase/auth";
-import type { NextPage } from "next";
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import superjson from "superjson";
-import { auth } from "../comp/auth";
+import { auth } from "./auth";
 
 export const defaultUiConfig = {
   signInFlow: "popup",
@@ -35,7 +34,7 @@ const useAuth = (auth: Auth) => {
   return [signIn, getUser(), loading, error, signOut] as const;
 };
 
-const Login: NextPage = () => {
+const Login = () => {
   const [signIn, user, loading, error, signOut] = useAuth(auth);
 
   const display = () => {

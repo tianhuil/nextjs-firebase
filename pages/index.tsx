@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { useInstall } from "../comp/install";
+import Login from "../comp/login";
 
 const Home: NextPage = () => {
   const [prompt, promptToInstall] = useInstall();
@@ -25,6 +26,9 @@ const Home: NextPage = () => {
       </Head>
       <main style={{ padding: 20 }}>
         <h2>Hello</h2>
+        <Login />
+        <div style={{ margin: 20 }} />
+
         {isVisible && (
           <>
             <button onClick={promptToInstall}>Install</button>{" "}
