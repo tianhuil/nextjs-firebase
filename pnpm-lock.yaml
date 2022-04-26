@@ -19,6 +19,7 @@ specifiers:
   react-firebaseui: ^6.0.0
   react-query: ^3.38.0
   react-transition-group: ^4.4.2
+  superjson: ^1.9.0
   typescript: 4.6.3
 
 dependencies:
@@ -34,6 +35,7 @@ dependencies:
   react-firebaseui: 6.0.0_firebase@9.6.11+react@17.0.2
   react-query: 3.38.0_react-dom@17.0.2+react@17.0.2
   react-transition-group: 4.4.2_react-dom@17.0.2+react@17.0.2
+  superjson: 1.9.0
 
 devDependencies:
   '@types/node': 17.0.25
@@ -1042,6 +1044,13 @@ packages:
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
+  /copy-anything/3.0.2:
+    resolution: {integrity: sha512-CzATjGXzUQ0EvuvgOCI6A4BGOo2bcVx8B+eC2nF862iv9fopnPQwlrbACakNCHRIJbCSBj+J/9JeDf60k64MkA==}
+    engines: {node: '>=12.13'}
+    dependencies:
+      is-what: 4.1.7
+    dev: false
+
   /core-js-pure/3.22.2:
     resolution: {integrity: sha512-Lb+/XT4WC4PaCWWtZpNPaXmjiNDUe5CJuUtbkMrIM1kb1T/jJoAIp+bkVP/r5lHzMr+ZAAF8XHp7+my6Ol0ysQ==}
     requiresBuild: true
@@ -1831,6 +1840,11 @@ packages:
       call-bind: 1.0.2
     dev: true
 
+  /is-what/4.1.7:
+    resolution: {integrity: sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==}
+    engines: {node: '>=12.13'}
+    dev: false
+
   /isarray/1.0.0:
     resolution: {integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=}
     dev: false
@@ -2576,6 +2590,13 @@ packages:
         optional: true
     dependencies:
       react: 17.0.2
+    dev: false
+
+  /superjson/1.9.0:
+    resolution: {integrity: sha512-QINRsBDH2qiLUKEjTfZTP2xH7s9CvzyFrv8b/XclCnmC6W7J7Y1vk8ApKtmSgWz+IzWvp5JbZJhc0uGR++kdyw==}
+    engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.2
     dev: false
 
   /supports-color/7.2.0:
